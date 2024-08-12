@@ -1,0 +1,14 @@
+{
+  "name": "create-connectkit",
+  "version": "1.0.0",
+  "repository": "git@github.com:Particle-Network/create-connectkit.git",
+  "author": "Felix <chuanfa.chai@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prettier": "prettier --write '**/*.{js,cjs,jsx,ts,tsx,css,less,sass,html,json}'"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
