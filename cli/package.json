@@ -1,0 +1,47 @@
+{
+  "name": "@particle-network/create-connectkit",
+  "version": "1.0.0-alpha.0",
+  "type": "module",
+  "description": "Scaffold a new Particle Connectkit project",
+  "repository": "https://github.com/Particle-Network/create-connectkit",
+  "homepage": "https://particle.network",
+  "author": "Felix <chuanfa.chai@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "bin": {
+    "create-connectkit": "dist/index.js"
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf templates && rm -fr generated-test-app",
+    "build": "yarn clean && node build.js",
+    "dev": "node build.js --watch",
+    "typecheck": "tsc --noEmit",
+    "test:setup": "rm -rf generated-test-app && node ./dist/index.js generated-test-app --template next-connectkit-app --skip-git --use-yarn",
+    "test:dev": "yarn test:setup && cd generated-test-app && yarn dev",
+    "test:build": "yarn test:setup && cd generated-test-app && yarn build",
+    "test": "yarn test:build"
+  },
+  "dependencies": {
+    "chalk": "5.0.1",
+    "commander": "9.2.0",
+    "cpy": "9.0.1",
+    "execa": "6.1.0",
+    "fs-extra": "10.1.0",
+    "prompts": "2.4.2",
+    "validate-npm-package-name": "4.0.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "9.0.13",
+    "@types/prompts": "2.0.14",
+    "@types/validate-npm-package-name": "3.0.3",
+    "esbuild": "^0.15.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
