@@ -2,13 +2,7 @@
 
 import { ConnectKitProvider, createConfig } from '@particle-network/connectkit';
 import { authWalletConnectors } from '@particle-network/connectkit/auth';
-import {
-  arbitrum,
-  base,
-  mainnet,
-  polygon,
-  solana
-} from '@particle-network/connectkit/chains';
+import { arbitrum, base, mainnet, polygon, solana } from '@particle-network/connectkit/chains';
 import { evmWalletConnectors } from '@particle-network/connectkit/evm';
 import { solanaWalletConnectors } from '@particle-network/connectkit/solana';
 import { EntryPosition, wallet } from '@particle-network/connectkit/wallet';
