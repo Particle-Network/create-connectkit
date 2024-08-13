@@ -4,14 +4,10 @@ import { ConnectKitProvider, createConfig } from '@particle-network/connectkit';
 import { authWalletConnectors } from '@particle-network/connectkit/auth';
 import {
   arbitrum,
-  avalanche,
   base,
-  bsc,
-  linea,
   mainnet,
-  optimism,
   polygon,
-  solana,
+  solana
 } from '@particle-network/connectkit/chains';
 import { evmWalletConnectors } from '@particle-network/connectkit/evm';
 import { solanaWalletConnectors } from '@particle-network/connectkit/solana';
@@ -40,7 +36,13 @@ const config = createConfig({
   },
   walletConnectors: [
     evmWalletConnectors({
-      metadata: { name: 'My App', icon: '', description: '', url: '' },
+      // TODO: replace it with your app metadata.
+      metadata: {
+        name: 'Connectkit Demo',
+        icon: typeof window !== 'undefined' ? `${window.location.origin}/favicon.ico` : '',
+        description: 'Particle Connectkit Next.js Scaffold.',
+        url: typeof window !== 'undefined' ? window.location.origin : '',
+      },
       walletConnectProjectId: walletConnectProjectId,
     }),
     authWalletConnectors(),
@@ -48,11 +50,11 @@ const config = createConfig({
   ],
   plugins: [
     wallet({
-      visible: false,
+      visible: true,
       entryPosition: EntryPosition.BR,
     }),
   ],
-  chains: [mainnet, base, arbitrum, avalanche, linea, bsc, optimism, polygon, solana],
+  chains: [mainnet, base, arbitrum, polygon, solana],
 });
 
 // Wrap your application with this component.

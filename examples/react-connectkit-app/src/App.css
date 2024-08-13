@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 100vh;
 }
 
 .App-logo {
@@ -34,5 +40,23 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.connect-btn-container {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+
+a {
+  color: #a855f7;
+  font-size: 24px;
+}
+
+.demo {
+  max-width: 800px;
+  @media only screen and (max-width: 800px) {
+    width: 100%;
   }
 }
