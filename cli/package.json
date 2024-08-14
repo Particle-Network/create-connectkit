@@ -18,7 +18,7 @@
     "create-connectkit": "dist/index.js"
   },
   "scripts": {
-    "clean": "rm -rf dist && rm -rf templates && rm -fr generated-test-app",
+    "clean": "rm -rf dist && rm -rf templates && rm -rf generated-test-app",
     "build": "yarn clean && node build.js",
     "dev": "node build.js --watch",
     "typecheck": "tsc --noEmit",
