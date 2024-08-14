@@ -6,9 +6,13 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prettier": "prettier --write '**/*.{js,cjs,jsx,ts,tsx,css,less,sass,html,json}'"
+    "prettier": "prettier --write '**/*.{js,cjs,jsx,ts,tsx,css,less,sass,html,json}'",
+    "upgrade:particle": "node scripts/updateVersion.cjs"
   },
   "devDependencies": {
     "prettier": "^3.3.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.3"
   }
 }

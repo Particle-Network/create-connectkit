@@ -13,6 +13,16 @@ import { detectPackageManager } from './detectPackageManager';
 
 const log = console.log;
 
+const erc4337Map = {
+  BICONOMY: '2.0.0',
+  SIMPLE: '2.0.0',
+  CYBERCONNECT: '1.0.0',
+  LIGHT: '1.0.0',
+  XTERIO: '1.0.0',
+} as const;
+
+type ERC4337Name = keyof typeof erc4337Map;
+
 class FriendlyError extends Error {}
 
 async function run() {
@@ -33,6 +43,13 @@ async function run() {
       .option('--use-pnpm', 'Explicitly tell the CLI to bootstrap the app using pnpm')
       .option('--skip-git', 'Skip initializing a git repository')
       .option('--template <templateName>', 'Choose app template', '')
+      .option('--chains [chains...]', 'Select the chains supported by the app:\nsolana\nevm', '')
+      .option(
+        '--erc4337 <erc4337>',
+        `Set the app to support ERC-4337(only support EVM chains):\n${Object.keys(erc4337Map).join('\n')}`,
+        ''
+      )
+      .option('--embedded-wallet', 'Enable embedded wallet')
       .allowUnknownOption()
       .parse(process.argv);
 
@@ -118,6 +135,7 @@ async function run() {
         type: 'select',
         message: 'What is the template of your project?',
         name: 'value',
+        initial: 0,
         choices: [
           { title: 'create-next-app', value: 'next-connectkit-app' },
           { title: 'create-react-app', value: 'react-connectkit-app' },
@@ -137,6 +155,93 @@ async function run() {
       );
     }
 
+    let chains = options.chains as string[];
+    if (!chains || chains.some((chain) => !['evm', 'solana'].includes(chain))) {
+      const { value } = await prompts({
+        type: 'multiselect',
+        message: 'Which chains does your app support?​',
+        name: 'value',
+        min: 1,
+        choices: [
+          { title: 'EVM', value: 'evm', selected: true },
+          { title: 'Solana', value: 'solana' },
+        ],
+      });
+      chains = value;
+    }
+
+    if (!chains || !chains.length) {
+      throw new FriendlyError(chalk.red(`👀 You must choose the chains your app supports.`));
+    }
+
+    let erc4337 = options.erc4337;
+    if (!erc4337 || !Object.keys(erc4337Map).includes(erc4337)) {
+      const { value } = await prompts({
+        type: 'select',
+        message: 'Which ERC-4337 Contract does your app support?​',
+        name: 'value',
+        initial: 0,
+        choices: [
+          { title: 'DISABLE', value: '' },
+          ...Object.keys(erc4337Map).map((value) => {
+            return { title: `${value}-${erc4337Map[value as ERC4337Name]}`, value };
+          }),
+        ],
+      });
+      erc4337 = value;
+    }
+
+    let embeddedWallet = options.embeddedWallet;
+    if (embeddedWallet == null) {
+      const { value } = await prompts({
+        type: 'confirm',
+        message: 'Does it support an embedded wallet?​',
+        name: 'value',
+        initial: true,
+      });
+      embeddedWallet = value;
+    }
+
+    let connectkitCode = fs.readFileSync(`${selectedTemplatePath}/src/connectkit.tsx`, 'utf8');
+
+    if (chains.length === 1) {
+      if (chains[0] === 'evm') {
+        // remove solana
+        const solanaRegex = /\/\/ solana start[\s\S]*?\/\/ solana end/g;
+        connectkitCode = connectkitCode.replace(solanaRegex, '');
+      } else if (chains[0] === 'solana') {
+        // remove evm
+        const evmRegex = /\/\/ evm start[\s\S]*?\/\/ evm end/g;
+        connectkitCode = connectkitCode.replace(evmRegex, '');
+      }
+    }
+
+    if (!embeddedWallet) {
+      const regex = /\/\/ embedded wallet start[\s\S]*?\/\/ embedded wallet end/g;
+      connectkitCode = connectkitCode.replace(regex, '');
+    }
+
+    if (!erc4337 || !chains.includes('evm')) {
+      const disableAARegex = /\/\/ aa start[\s\S]*?\/\/ aa end/g;
+      connectkitCode = connectkitCode.replace(disableAARegex, '');
+      const disableAAConfigRegex = /\/\/ aa config start[\s\S]*?\/\/ aa config end/g;
+      connectkitCode = connectkitCode.replace(disableAAConfigRegex, '');
+    } else {
+      const version = erc4337Map[erc4337 as ERC4337Name];
+      const aaRegex = /\/\/ aa config start[\s\S]*?\/\/ aa config end/g;
+      connectkitCode = connectkitCode.replace(
+        aaRegex,
+        `
+    // aa config start
+    aa({
+      name: '${erc4337}',
+      version: '${version}',
+    }),
+    // aa config end
+  `
+      );
+    }
+
     log(chalk.cyan(`🚀 Creating a new Connectkit app in ${chalk.bold(targetPath)}`));
 
     const ignoreList: string[] = ['node_modules', '.next', 'CHANGELOG.md', 'yarn.lock'];
@@ -147,7 +252,6 @@ async function run() {
           const relativePath = path.relative(selectedTemplatePath, src.path);
           return !relativePath.includes(ignore);
         }),
-      rename: (name) => name.replace(/^_dot_/, '.'),
     });
 
     // Update package name
@@ -159,6 +263,8 @@ async function run() {
     delete pkgJson.dependencies['viem'];
 
     await fs.writeFile(path.join(targetPath, 'package.json'), JSON.stringify(pkgJson, null, 2));
+
+    await fs.writeFile(path.join(`${targetPath}/src`, 'connectkit.tsx'), connectkitCode);
 
     const packageManager = options.usePnpm
       ? 'pnpm'

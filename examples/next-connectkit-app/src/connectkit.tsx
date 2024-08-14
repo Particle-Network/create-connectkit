@@ -1,22 +1,24 @@
 'use client';
 
+import React from 'react';
+
 import { ConnectKitProvider, createConfig } from '@particle-network/connectkit';
 import { authWalletConnectors } from '@particle-network/connectkit/auth';
-import {
-  arbitrum,
-  avalanche,
-  base,
-  bsc,
-  linea,
-  mainnet,
-  optimism,
-  polygon,
-  solana,
-} from '@particle-network/connectkit/chains';
-import { evmWalletConnectors } from '@particle-network/connectkit/evm';
-import { solanaWalletConnectors } from '@particle-network/connectkit/solana';
+import type { Chain } from '@particle-network/connectkit/chains';
+// embedded wallet start
 import { EntryPosition, wallet } from '@particle-network/connectkit/wallet';
-import React from 'react';
+// embedded wallet end
+// aa start
+import { aa } from '@particle-network/connectkit/aa';
+// aa end
+// evm start
+import { arbitrum, base, mainnet, polygon } from '@particle-network/connectkit/chains';
+import { evmWalletConnectors } from '@particle-network/connectkit/evm';
+// evm end
+// solana start
+import { solana } from '@particle-network/connectkit/chains';
+import { solanaWalletConnectors } from '@particle-network/connectkit/solana';
+// solana end
 
 const projectId = process.env.NEXT_PUBLIC_PROJECT_ID as string;
 const clientKey = process.env.NEXT_PUBLIC_CLIENT_KEY as string;
@@ -27,6 +29,14 @@ if (!projectId || !clientKey || !appId) {
   throw new Error('Please configure the Particle project in .env first!');
 }
 
+const supportChains: Chain[] = [];
+// evm start
+supportChains.push(mainnet, base, arbitrum, polygon);
+// evm end
+// solana start
+supportChains.push(solana);
+// solana end
+
 const config = createConfig({
   projectId,
   clientKey,
@@ -34,25 +44,43 @@ const config = createConfig({
   appearance: {
     recommendedWallets: [
       { walletId: 'metaMask', label: 'Recommended' },
-      { walletId: 'coinbaseWallet', label: 'popular' },
+      { walletId: 'coinbaseWallet', label: 'Popular' },
     ],
     language: 'en-US',
   },
   walletConnectors: [
+    authWalletConnectors(),
+    // evm start
     evmWalletConnectors({
-      metadata: { name: 'My App', icon: '', description: '', url: '' },
+      // TODO: replace it with your app metadata.
+      metadata: {
+        name: 'Connectkit Demo',
+        icon: typeof window !== 'undefined' ? `${window.location.origin}/favicon.ico` : '',
+        description: 'Particle Connectkit Next.js Scaffold.',
+        url: typeof window !== 'undefined' ? window.location.origin : '',
+      },
       walletConnectProjectId: walletConnectProjectId,
     }),
-    authWalletConnectors(),
+    // evm end
+    // solana start
     solanaWalletConnectors(),
+    // solana end
   ],
   plugins: [
+    // embedded wallet start
     wallet({
-      visible: false,
+      visible: true,
       entryPosition: EntryPosition.BR,
     }),
+    // embedded wallet end
+    // aa config start
+    aa({
+      name: 'BICONOMY',
+      version: '2.0.0',
+    }),
+    // aa config end
   ],
-  chains: [mainnet, base, arbitrum, avalanche, linea, bsc, optimism, polygon, solana],
+  chains: supportChains as unknown as readonly [Chain, ...Chain[]],
 });
 
 // Wrap your application with this component.
