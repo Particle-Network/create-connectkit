@@ -1,10 +1,32 @@
+<a href="https://particle.network">
+  <img alt="Particle Network" width="100%" src="./assets/demo-preview.webp" />
+</a>
 # Create Connect
 
-Particle Connect acts as a simple method of aggregating connection with both Web2 accounts through Particle Auth and Web3 accounts through traditional wallets, creating an equally accessible experience for both Web3 natives and traditional consumers. Specifically, Particle Connect is a custom connection modal built around interaction with Particle.
+[Particle Connect](https://developers.particle.network/api-reference/connect/desktop/web) enables a unified modal driving connection with both social logins (through Particle Auth) and standard Web3 wallets, creating an equally accessible experience for Web3 natives and traditional consumers. Essentially, Particle Connect acts as an all-in-one SDK capable of handling end-to-end onboarding and wallet connection.
 
-![connectkit](https://static.particle.network/mintlify/images/01.gif)
+## Overview
+
+Particle Connectkit is a [React](https://react.dev/) library that makes it easy to add wallet connection to your dapp. 
+
+✅ Supports all EVM-compatible chains and Solana chains   
+✅ Supports email, phone, social, and wallet login methods    
+✅ Easily customizable   
+✅ [Account Abstraction](https://eips.ethereum.org/EIPS/eip-4337)   
+✅ Embedded Wallet    
+✅ Built on top of viem   
+✅ Out-of-the-box wallet management   
+
+
+## Examples
+
+The following examples are provided in the [examples](./examples/) folder of this repo.
+
+* next-connectkit-app
+* react-connectkit-app
+
 
 ## Learn More
 
-- [🔥Live Demo](https://demo.particle.netwok) - feature demonstration and custom styling.
-- [Docs](https://developers.particle.network/api-reference/connect/desktop/web) - learn about `@particle-network/connectkit` features and API.
+- 🎉[Live Demo](https://demo.particle.netwok) - feature demonstration and custom styling.
+- 👉[Docs](https://developers.particle.network/api-reference/connect/desktop/web) - learn about `@particle-network/connectkit` features and API.
