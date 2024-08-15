@@ -1,6 +1,7 @@
 <a href="https://particle.network">
   <img alt="Particle Network" width="100%" src="./assets/demo-preview.webp" />
 </a>
+
 # Create Connect
 
 [Particle Connect](https://developers.particle.network/api-reference/connect/desktop/web) enables a unified modal driving connection with both social logins (through Particle Auth) and standard Web3 wallets, creating an equally accessible experience for Web3 natives and traditional consumers. Essentially, Particle Connect acts as an all-in-one SDK capable of handling end-to-end onboarding and wallet connection.
