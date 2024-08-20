@@ -10,16 +10,16 @@ function App() {
       </div>
 
       <a href="https://demo.particle.network" target="_blank" rel="noreferrer" className="text-2xl text-purple-500">
-        Particle Demo
+        Particle Connect Demo
       </a>
 
       <a
-        href="https://developers.particle.network"
+        href="https://developers.particle.network/guides/wallet-as-a-service/waas/connect/web-quickstart"
         target="_blank"
         rel="noreferrer"
         className="text-2xl text-purple-500"
       >
-        Document
+        Particle Connect Docs
       </a>
 
       <img src={demo} className="demo" alt="demo"></img>
