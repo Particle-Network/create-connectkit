@@ -11,11 +11,11 @@ export default function Home() {
       </div>
 
       <Link href="https://demo.particle.network" target="_blank" className="text-2xl text-purple-500">
-        Particle Demo
+        Particle Connect Demo
       </Link>
 
-      <Link href="https://developers.particle.network" target="_blank" className="text-2xl text-purple-500">
-        Document
+      <Link href="https://developers.particle.network/guides/wallet-as-a-service/waas/connect/web-quickstart" target="_blank" className="text-2xl text-purple-500">
+        Particle Connect Docs
       </Link>
 
       <Image src={demo} className="max-lg:w-full max-w-[800px]" alt="demo"></Image>
