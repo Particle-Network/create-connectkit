@@ -76,7 +76,6 @@ export default function Home() {
           )}
         </div>
         )}
-      </div>
 
       <Image
         src={demo}
