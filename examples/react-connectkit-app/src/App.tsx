@@ -73,7 +73,6 @@ function App() {
           )}
         </div>
         )}
-      </div>
 
       <Image
         src={demo}
