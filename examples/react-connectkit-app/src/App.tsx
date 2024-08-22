@@ -11,7 +11,7 @@ function App() {
   const [primaryWallet] = useWallets();
   const [signedMessage, setSignedMessage] = useState<string | null>(null);
 
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
 
   // Sign a message
   const signMessage = async () => {
