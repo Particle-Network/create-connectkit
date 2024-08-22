@@ -56,22 +56,25 @@ export default function Home() {
         </Link>
       </div>
 
-      <div className="border border-purple-500 p-6 rounded-lg flex flex-col gap-4 items-center bg-black bg-opacity-80 shadow-lg mt-10">
-        <h2 className="text-2xl text-white mb-4">Sign a Message</h2>
-        <button
-          onClick={signMessage}
-          className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-400 transition duration-300 ease-in-out"
-        >
-          Sign Message
-        </button>
-        {signedMessage && (
-          <div className="mt-4 text-white break-all">
-            <p>Signed Message:</p>
-            <p>{signedMessage}</p>
-            <p>From:</p>
-            <p></p>
-            <p>{address}</p>
-          </div>
+      {isConnected && (
+        <div className="border border-purple-500 p-6 rounded-lg flex flex-col gap-4 items-center bg-black bg-opacity-80 shadow-lg mt-10">
+          <h2 className="text-2xl text-white mb-4">Sign a Message</h2>
+          <button
+            onClick={signMessage}
+            className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-400 transition duration-300 ease-in-out"
+          >
+            Sign Message
+          </button>
+          {signedMessage && (
+            <div className="mt-4 text-white break-all">
+              <p>Signed Message:</p>
+              <p>{signedMessage}</p>
+              <p>From:</p>
+              <p></p>
+              <p>{address}</p>
+            </div>
+          )}
+        </div>
         )}
       </div>
 
