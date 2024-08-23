@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2021",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "preserveSymlinks": true,
+    "declaration": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": false,
+    "lib": ["ES2022", "DOM"],
+
+    "noFallthroughCasesInSwitch": true, // Not enabled by default in `strict` mode.
+    "noImplicitOverride": true, // Not enabled by default in `strict` mode.
+    "noImplicitReturns": true, // Not enabled by default in `strict` mode.
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false, // Not enabled by default in `strict` mode.
+    "noUnusedParameters": false, // Not enabled by default in `strict` mode.
+    "useDefineForClassFields": true, // Not enabled by default in `strict` mode unless we bump `target` to ES2022.
+    "useUnknownInCatchVariables": true,
+
+    // JavaScript support
+    "allowJs": false,
+    "checkJs": false,
+    // Interop constraints
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "noErrorTruncation": true,
+    "baseUrl": "."
+  },
+  "ts-node": {
+    // these options are overrides used only by ts-node
+    // same as our --compilerOptions flag and our TS_NODE_COMPILER_OPTIONS environment variable
+    "compilerOptions": {
+      "module": "commonjs",
+      "verbatimModuleSyntax": false
+    }
+  },
+  "include": ["examples/*/src"],
+  "exclude": ["node_modules", "packages/*/node_modules"]
+}

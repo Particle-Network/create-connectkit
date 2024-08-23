@@ -5,12 +5,18 @@
   "author": "Felix <chuanfa.chai@gmail.com>",
   "license": "MIT",
   "private": true,
+  "workspaces": [
+    "examples/*",
+    "cli"
+  ],
   "scripts": {
     "prettier": "prettier --write '**/*.{js,cjs,jsx,ts,tsx,css,less,sass,html,json}'",
     "upgrade:particle": "node scripts/updateVersion.cjs"
   },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5"
   },
   "dependencies": {
     "axios": "^1.7.3"

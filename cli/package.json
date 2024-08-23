@@ -42,6 +42,6 @@
     "@types/validate-npm-package-name": "3.0.3",
     "esbuild": "^0.15.10",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5"
   }
 }
