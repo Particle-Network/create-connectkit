@@ -19,6 +19,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "axios": "^1.7.3"
+    "axios": "^1.7.3",
+    "react-toastify": "^10.0.5"
   }
 }

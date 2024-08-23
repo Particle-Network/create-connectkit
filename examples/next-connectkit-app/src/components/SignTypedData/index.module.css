@@ -1,0 +1,9 @@
+.collapse-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.right-btn {
+  align-self:flex-end;
+}

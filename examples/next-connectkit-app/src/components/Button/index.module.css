@@ -1,0 +1,17 @@
+.button {
+  padding: 12px 32px;
+  background-color: #A257FA;
+  border-radius: 12px;
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.block-button {
+  width: 100%;
+}
