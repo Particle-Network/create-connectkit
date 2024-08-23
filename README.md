@@ -40,6 +40,12 @@ You can find example projects in the [examples](./examples/) directory of this r
 - `next-connectkit-app`
 - `react-connectkit-app`
 
+Start a demo:
+
+```bash
+yarn workspace next-connectkit-app dev
+```
+
 ## Learn More
 
 - 🎉 **[Live Demo](https://demo.particle.netwok)**: Explore a live demo of Particle Connectkit’s features and customization options.
