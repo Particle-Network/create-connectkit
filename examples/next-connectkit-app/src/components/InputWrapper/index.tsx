@@ -25,6 +25,8 @@ function InputWrapper(props: InputWrapperProps) {
 }
 
 type InputProps = {
+  value: string | undefined;
+  setValue: (data: string) => void;
   label: String;
   children?: React.ReactNode;
   placeholder?: string;
@@ -33,9 +35,15 @@ type InputProps = {
 }
 
 export function Input(props: InputProps) {
+  const { value, setValue } = props;
+
+  const handleInputValue = (e) => {
+    setValue(e.target.value)
+  }
+
   return (
     <InputWrapper label={props.label}>
-      <input type={props.type || 'text'} className={styles['input']} placeholder={props.placeholder} />
+      <input type={props.type || 'text'} className={styles['input']} placeholder={props.placeholder} value={value} onChange={handleInputValue} />
       {
         props.suffix && (
           <span className={styles['suffix']}>{props.suffix}</span>
@@ -51,7 +59,10 @@ type TextareaProps = {
   label?: string;
   defaultValue?: string;
   placeholder?: string;
-  tags?: string[];
+  tags?: {
+    key: string,
+    value: string
+  }[];
   type?: string;
 }
 
@@ -62,6 +73,10 @@ export function Textarea(props: TextareaProps) {
     setValue(e.target.value)
   }
 
+  const handleClickTag = (data: string) => {
+    setValue(data)
+  }
+
   return (
     <InputWrapper label={props.label}>
       <textarea className={styles.textarea} value={value} onChange={handleInputValue} placeholder={props.placeholder} />
@@ -70,7 +85,7 @@ export function Textarea(props: TextareaProps) {
           <div className={styles.tags}>
             {
               props.tags.map(item => (
-                <Tag key={item}>{item}</Tag>
+                <Tag key={item.key} onClick={() => handleClickTag(item.value)}>{item.key}</Tag>
               ))
             }
           </div>
