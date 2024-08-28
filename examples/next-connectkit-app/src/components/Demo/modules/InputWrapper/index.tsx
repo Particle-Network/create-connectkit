@@ -96,6 +96,8 @@ export function Textarea(props: TextareaProps) {
 }
 
 type SelectorProps = {
+  value: string;
+  setValue: (data: string) => void;
   label: string;
   options: {
     value: string;
@@ -107,11 +109,10 @@ type SelectorProps = {
 
 export function Selector(props: SelectorProps) {
   const [toggleOptions, setToggleOptions] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
-  const { options = [] } = props;
+  const { options = [], value, setValue } = props;
 
   const handleSelectValue = (e) => {
-    setSelectedValue(e.target.getAttribute("data-value"));
+    setValue(e.target.getAttribute("data-value"));
     setToggleOptions(false);
   }
 
@@ -131,15 +132,15 @@ export function Selector(props: SelectorProps) {
 
   return (
     <InputWrapper label={props.label}>
-      <input id="selector" type={props.type || 'text'} readOnly className={styles['input']} value={selectedValue} placeholder={props.placeholder} onFocus={() => setToggleOptions(true)} />
+      <input id="selector" type={props.type || 'text'} readOnly className={styles['input']} value={value} placeholder={props.placeholder} onFocus={() => setToggleOptions(true)} />
       {
         toggleOptions && (
           <div className={styles.options} id="options">
             {
               options.map(item => (
-                <div key={item.value} onClick={handleSelectValue} className={classnames(styles.option, selectedValue === item.value ? styles['option-selected']  : '')} data-value={item.value}>{item.label}
+                <div key={item.value} onClick={handleSelectValue} className={classnames(styles.option, value === item.value ? styles['option-selected']  : '')} data-value={item.value}>{item.label}
                   {
-                    selectedValue === item.value ? (
+                    value === item.value ? (
                       <Image className={styles['right-icon']} alt='right' src={rightIcon}></Image>
                     ) : null
                   }

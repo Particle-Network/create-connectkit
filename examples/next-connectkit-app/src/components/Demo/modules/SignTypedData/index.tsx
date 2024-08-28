@@ -5,7 +5,7 @@ import {
   useWallets,
   useAccount
 } from "@particle-network/connectkit";
-import { toast } from 'react-toastify';
+import { useToast } from '../../store/useGlobalState';
 import Collapse from '../Collapse';
 import Button from '../Button';
 import { Textarea } from '../InputWrapper';
@@ -13,6 +13,7 @@ import styles from './index.module.css';
 
 export default function SignTypedData() {
   const [primaryWallet] = useWallets();
+  const toast = useToast()
   
   // Address tied to the connected wallet (or social login)
   const { address } = useAccount();
@@ -63,8 +64,8 @@ export default function SignTypedData() {
         account: address as `0x${string}`,
         ...eval(`(${signTypedDataValue})`)
       });
-      console.log('signature', signature)
-      toast.success(`Signature: ${signature}`)
+      console.log('signature', signature);
+      toast.current?.show(signature)
     } catch (error) {
       console.error("Error signing typed data:", error);
     }

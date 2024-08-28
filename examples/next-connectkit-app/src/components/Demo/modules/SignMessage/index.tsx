@@ -5,10 +5,10 @@ import {
   useWallets,
   useAccount
 } from "@particle-network/connectkit";
-import { toast } from 'react-toastify';
 import Collapse from '../Collapse';
 import Button from '../Button';
 import { Textarea } from '../InputWrapper';
+import Toast from '../Toast';
 import styles from './index.module.css';
 
 type SignMessageProps = {
@@ -31,7 +31,6 @@ export default function SignMessage(props: SignMessageProps) {
         account: address as `0x${string}`,
       });
       console.log('signature', signature)
-      toast.success(`Signature: ${signature}`);
     } catch (error) {
       console.error("Error signing message:", error);
     }

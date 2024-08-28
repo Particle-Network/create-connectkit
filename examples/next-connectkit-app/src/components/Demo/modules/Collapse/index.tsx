@@ -4,7 +4,7 @@ import React from "react";
 import Image from 'next/image'
 import arrowIcon from '@/assets/images/arrow.svg'
 import classnames from 'classnames';
-import { useActiveIndex } from '@/store/useGlobalState'
+import { useActiveIndex } from '../../store/useGlobalState'
 
 import styles from './index.module.css'
 

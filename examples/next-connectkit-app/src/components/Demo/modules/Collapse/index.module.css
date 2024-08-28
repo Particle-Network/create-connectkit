@@ -1,6 +1,6 @@
 .collapse {
   overflow: hidden;
-  max-height: 500px;
+  max-height: 1000px;
   transition: all .3s linear;
 }
 
