@@ -4,10 +4,8 @@
   top: 50%;
   width: 640px;
   height: 640px;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -50%);
 }
-
-
 
 .right-btn {
   align-self:flex-end;

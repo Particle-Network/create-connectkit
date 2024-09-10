@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { useSmartAccount, useWallets } from '@particle-network/connectkit';
+import { usePublicClient } from '@particle-network/connectkit';
 import type { AbiFunction } from 'viem';
 import Collapse from '../Collapse';
 import Button from '../Button';
@@ -22,19 +23,18 @@ export default function ContractInteraction() {
   const [params, setParams] = useState<Record<string, string>>({});
   const [primaryWallet] = useWallets();
   const smartAccount = useSmartAccount();
+  const publicClient = usePublicClient();
 
   const currentAbiType = useMemo(() => {
     return methodList?.find?.((item) => item.name === selectMethod)?.type;
   }, [selectMethod, methodList]);
 
   const selectedMethodData = useMemo(() => {
-    console.log(methodList, selectMethod)
     if (methodList.length === 0 || !selectMethod) return;
 
     return methodList.find((item) => item.name === selectMethod)
   }, [methodList, selectMethod])
 
-  console.log('params', params)
 
   useEffect(() => {
     if (abiValue) {
@@ -56,24 +56,6 @@ export default function ContractInteraction() {
   }
 
   const handleWriteContract = async () => {
-    try {
-      setBtnLoading(true);
-
-      const walletClient  = primaryWallet.getWalletClient();
-
-      const transactionHash = await interactWithContract(
-        walletClient,
-        contractAddress,
-        methodList?.find?.((item) => item.name === selectMethod)?.abi as AbiFunction,
-        params,
-        smartAccount
-      );
-
-      console.log('transactionHash', transactionHash)
-    } catch (error: any) {
-      console.log(error);
-    }
-    setBtnLoading(false);
   }
 
   const handleReadContract = async () => {
@@ -83,16 +65,19 @@ export default function ContractInteraction() {
       if (!contractAddress) {
         throw new Error('Please enter the contract address');
       }
-      const walletClient  = primaryWallet.getWalletClient();
 
-      const result = await readContract(
-        walletClient,
-        contractAddress,
-        methodList?.find?.((item) => item.name === selectMethod)?.abi as AbiFunction,
-        params
-      );
+      if (!publicClient) {
+        throw new Error('Wrong publicClient');
+      }
 
-      setReadResult(convertToString(result) || '');
+      const data = await publicClient.readContract({
+        address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
+        abi: abiValue as any,
+        functionName: 'balanceOf',
+        args: []
+      })
+      console.log('data', data)
+      // setReadResult(convertToString(result) || '');
     } catch (error: any) {
       console.log(error);
     }

@@ -13,8 +13,6 @@ import styles from './index.module.css'
 
 export default function Demo() {
   const ToastRef: any = useRef(null);
-
-  console.log('ToastRef.current', ToastRef.current)
   return (
     <ContextProvider toast={ToastRef}>
       <div className={styles.demo}>
