@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import {
   useWallets,
-  useAccount
+  useAccount,
+  useSwitchChain
 } from "@particle-network/connectkit";
-import { useToast } from '../../store/useGlobalState';
 import Collapse from '../Collapse';
 import Button from '../Button';
 import { Textarea } from '../InputWrapper';
@@ -13,8 +13,9 @@ import styles from './index.module.css';
 
 export default function SignTypedData() {
   const [primaryWallet] = useWallets();
-  const toast = useToast()
-  
+  const [result, setResult] = useState<string>('');
+  const [loading, setLoading] = useState(false);
+  const { switchChain, switchChainAsync, error, status } = useSwitchChain();
   // Address tied to the connected wallet (or social login)
   const { address } = useAccount();
 
@@ -58,16 +59,21 @@ export default function SignTypedData() {
   // Sign typed data
   const signTypedData = async () => {
     try {
-      const walletClient = primaryWallet.getWalletClient();
+      setLoading(true);
 
+      const data = eval(`(${signTypedDataValue})`);
+      const chainId = data?.domain?.chainId;
+      await switchChainAsync({ chainId })
+      const walletClient = primaryWallet.getWalletClient();
       const signature = await walletClient.signTypedData({
         account: address as `0x${string}`,
-        ...eval(`(${signTypedDataValue})`)
+        ...data
       });
-      console.log('signature', signature);
-      toast.current?.show(signature)
+      setResult(`signature: ${signature}`)
     } catch (error) {
       console.error("Error signing typed data:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -80,8 +86,13 @@ export default function SignTypedData() {
           value={signTypedDataValue}
           setValue={setSignTypedDataValue}
         />
-        <Button className={styles['right-btn']} onClick={signTypedData}>SIGN</Button>
+        <Button loading={loading} className={styles['right-btn']} onClick={signTypedData}>SIGN</Button>
       </div>
+      {
+        result ? (
+          <div className={styles.result}>{result}</div>
+        ) : null
+      }
     </Collapse>
   )
 }

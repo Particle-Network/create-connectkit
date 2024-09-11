@@ -13,6 +13,7 @@ export default function SendNativeToken() {
   const [toAddress, setToAddress] = useState<string>('');
   const [amount, setAmount] = useState<string>('')
   const { chain, address } = useAccount();
+  const [result, setResult] = useState<string>('');
   const [primaryWallet] = useWallets();
 
   const handleSendTransaction = async () => {
@@ -22,8 +23,8 @@ export default function SendNativeToken() {
       const tx = {
         to: toAddress as Address,
         value: parseEther(amount as string),
-        data: '0x', // No contract interaction, so data is empty
-        chain: chain,
+        data: '0x' as Address, // No contract interaction, so data is empty
+        chain: chain as any,
         account: address as Address,
       };
   
@@ -31,10 +32,9 @@ export default function SendNativeToken() {
       const walletClient = primaryWallet.getWalletClient();
       const transactionResponse = await walletClient.sendTransaction(tx);
   
-      console.log('Transaction sent:', transactionResponse);
+      setResult(`Transaction Hash: ${transactionResponse}`)
       setLoading(false);
     } catch (err) {
-      console.log('Transaction err:', err);
       setLoading(false);
     }
   }
@@ -46,6 +46,11 @@ export default function SendNativeToken() {
         <Input type='number' label="Token amount"  placeholder="amount in wei" suffix="wei" value={amount} setValue={setAmount} />
         <Button loading={loading} block onClick={handleSendTransaction}>SEND TRANSACTION</Button>
       </div>
+      {
+        result ? (
+          <div className={styles.result}>{result}</div>
+        ) : null
+      }
     </Collapse>
   )
 }

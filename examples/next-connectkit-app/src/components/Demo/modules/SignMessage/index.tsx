@@ -8,7 +8,7 @@ import {
 import Collapse from '../Collapse';
 import Button from '../Button';
 import { Textarea } from '../InputWrapper';
-import Toast from '../Toast';
+
 import styles from './index.module.css';
 
 type SignMessageProps = {
@@ -20,19 +20,25 @@ export default function SignMessage(props: SignMessageProps) {
   const [primaryWallet] = useWallets();
   // Address tied to the connected wallet (or social login)
   const { address } = useAccount();
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<string>('');
 
   // Sign a message
   const signMessage = async () => {
     try {
+      setLoading(true);
       const walletClient = primaryWallet.getWalletClient();
       
       const signature = await walletClient.signMessage({
         message: signValue,
         account: address as `0x${string}`,
       });
-      console.log('signature', signature)
+
+      setResult(`signature: ${signature}`)
     } catch (error) {
       console.error("Error signing message:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -40,8 +46,13 @@ export default function SignMessage(props: SignMessageProps) {
     <Collapse title="Sign Message" activeIndex={props.activeIndex}>
       <div className={styles['collapse-content']}>
         <Textarea type='textarea' label="Message" value={signValue} setValue={setSignValue} />
-        <Button className={styles['right-btn']} onClick={signMessage}>SIGN</Button>
+        <Button loading={loading} className={styles['right-btn']} onClick={signMessage}>SIGN</Button>
       </div>
+      {
+        result ? (
+          <div className={styles.result}>{result}</div>
+        ) : null
+      }
     </Collapse>
   )
 }

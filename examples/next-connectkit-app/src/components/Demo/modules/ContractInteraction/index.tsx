@@ -1,13 +1,13 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react';
-import { useSmartAccount, useWallets } from '@particle-network/connectkit';
+import { useAccount, useWallets } from '@particle-network/connectkit';
 import { usePublicClient } from '@particle-network/connectkit';
-import type { AbiFunction } from 'viem';
+import type { Abi, Address } from 'viem';
 import Collapse from '../Collapse';
 import Button from '../Button';
-import type { MethodItem } from './evm';
-import { ABI_TYPE, convertToString, interactWithContract, parseAbiToMethodList, readContract } from './evm';
+import type { MethodItem } from '../../util';
+import { ABI_TYPE, convertToString, parseAbiToMethodList } from './../../util';
 import { ERC1155, ERC20ABI, NFTABI } from './abi';
 import { Input, Textarea, Selector } from '../InputWrapper';
 
@@ -16,36 +16,40 @@ import styles from './index.module.css';
 export default function ContractInteraction() {
   const [abiValue, setABIValue] = useState('');
   const [contractAddress, setContractAddress] = useState('');
-  const [methodList, setMethodList] = useState<MethodItem[]>([]);
   const [selectMethod, setSelectMethod] = useState('');
   const [readResult, setReadResult] = useState<string>('');
   const [btnLoading, setBtnLoading] = useState(false);
   const [params, setParams] = useState<Record<string, string>>({});
   const [primaryWallet] = useWallets();
-  const smartAccount = useSmartAccount();
   const publicClient = usePublicClient();
+  const { chain, address } = useAccount();
 
-  const currentAbiType = useMemo(() => {
-    return methodList?.find?.((item) => item.name === selectMethod)?.type;
-  }, [selectMethod, methodList]);
+  const methodList = useMemo (() => {
+    if (!abiValue) return [];
 
-  const selectedMethodData = useMemo(() => {
-    if (methodList.length === 0 || !selectMethod) return;
+    return parseAbiToMethodList(abiValue)
+  }, [abiValue])
 
-    return methodList.find((item) => item.name === selectMethod)
-  }, [methodList, selectMethod])
+  const selectedMethodData: Partial<MethodItem> = useMemo(() => {
+    if (methodList.length === 0 || !selectMethod) return {};
 
+    return methodList.find((item) => item.name === selectMethod) as MethodItem
+  }, [methodList, selectMethod]);
 
-  useEffect(() => {
-    if (abiValue) {
-      setMethodList(parseAbiToMethodList(abiValue));
-    } else {
-      setMethodList([]);
-    }
-  }, [abiValue]);
+  const functionParams = useMemo(() => {
+    if (!selectedMethodData) return [];
+
+    return selectedMethodData.abi?.inputs.map((input) => {
+      if (input.type === 'uint256' && params[input.name as string]) {
+        return BigInt(params[input.name as string]);
+      }
+      return params[input.name as string];
+    })
+  }, [selectedMethodData, params]);
 
   useEffect(() => {
     setReadResult('');
+    setParams({})
   }, [selectMethod]);
 
   const handleInputParams = (value: string, name: string, index: number) => {
@@ -56,6 +60,29 @@ export default function ContractInteraction() {
   }
 
   const handleWriteContract = async () => {
+    try {
+      setBtnLoading(true);
+
+      if (!contractAddress) {
+        throw new Error('Please enter the contract address');
+      }
+
+      const walletClient = primaryWallet.getWalletClient();
+      const hash = await walletClient.writeContract({
+        address: contractAddress as Address, 
+        abi: JSON.parse(abiValue) as Abi,
+        functionName: selectedMethodData.abi?.name as string,
+        args: functionParams,
+        chain,
+        account: address as Address
+      })
+
+      setReadResult(`transaction hash: ${hash}` || '');
+    } catch (error: any) {
+      console.log(error);
+    } finally {
+      setBtnLoading(false);
+    }
   }
 
   const handleReadContract = async () => {
@@ -70,18 +97,19 @@ export default function ContractInteraction() {
         throw new Error('Wrong publicClient');
       }
 
-      const data = await publicClient.readContract({
-        address: '0xFBA3912Ca04dd458c843e2EE08967fC04f3579c2',
-        abi: abiValue as any,
-        functionName: 'balanceOf',
-        args: []
+      const result = await publicClient.readContract({
+        address: contractAddress as Address,
+        abi: JSON.parse(abiValue) as Abi,
+        functionName: selectedMethodData.abi?.name as string,
+        args: functionParams || []
       })
-      console.log('data', data)
-      // setReadResult(convertToString(result) || '');
+
+      setReadResult(convertToString(result) || '');
     } catch (error: any) {
       console.log(error);
+    } finally {
+      setBtnLoading(false);
     }
-    setBtnLoading(false);
   }
 
   return (
@@ -130,12 +158,12 @@ export default function ContractInteraction() {
           ) : null
         }
         {
-          currentAbiType === ABI_TYPE.Write ? (
+          selectedMethodData.type === ABI_TYPE.Write ? (
             <Button block loading={btnLoading} onClick={handleWriteContract}>WRITE</Button>
           ) : null
         }
         {
-          currentAbiType === ABI_TYPE.Read ? (
+          selectedMethodData.type === ABI_TYPE.Read ? (
             <Button block loading={btnLoading} onClick={handleReadContract}>READ</Button>
           ) : null
         }
