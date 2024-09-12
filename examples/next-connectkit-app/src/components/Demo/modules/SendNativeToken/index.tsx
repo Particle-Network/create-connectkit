@@ -19,6 +19,7 @@ export default function SendNativeToken() {
   const handleSendTransaction = async () => {
     try {
       setLoading(true)
+      setResult('')
       // Prepare the transaction object
       const tx = {
         to: toAddress as Address,

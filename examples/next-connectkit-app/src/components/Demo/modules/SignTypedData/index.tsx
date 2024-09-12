@@ -60,7 +60,7 @@ export default function SignTypedData() {
   const signTypedData = async () => {
     try {
       setLoading(true);
-
+      setResult('')
       const data = eval(`(${signTypedDataValue})`);
       const chainId = data?.domain?.chainId;
       await switchChainAsync({ chainId })

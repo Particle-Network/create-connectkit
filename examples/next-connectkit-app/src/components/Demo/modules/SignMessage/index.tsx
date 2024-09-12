@@ -27,6 +27,7 @@ export default function SignMessage(props: SignMessageProps) {
   const signMessage = async () => {
     try {
       setLoading(true);
+      setResult('')
       const walletClient = primaryWallet.getWalletClient();
       
       const signature = await walletClient.signMessage({
@@ -34,7 +35,7 @@ export default function SignMessage(props: SignMessageProps) {
         account: address as `0x${string}`,
       });
 
-      setResult(`signature: ${signature}`)
+      setResult(`Signature: ${signature}`)
     } catch (error) {
       console.error("Error signing message:", error);
     } finally {
