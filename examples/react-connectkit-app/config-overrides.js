@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = function override(config, env) {
   //do stuff with the webpack config...
@@ -12,6 +13,8 @@ module.exports = function override(config, env) {
     url: false,
   };
 
+  config.resolve.alias['@'] = path.resolve('src')
+
   config.plugins.unshift(
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer'],
@@ -24,8 +27,17 @@ module.exports = function override(config, env) {
     if (rule.oneOf instanceof Array) {
       rule.oneOf[rule.oneOf.length - 1].exclude = [/\.(js|mjs|jsx|cjs|ts|tsx)$/, /\.html$/, /\.json$/];
     }
+
     return rule;
   });
-
+  config.module.rules = [
+    ...config.module.rules,
+    {
+      test: /\.m?js/,
+      resolve: {
+        fullySpecified: false
+      }
+    }
+  ]
   return config;
 };

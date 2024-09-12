@@ -1,0 +1,55 @@
+.toast {
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  z-index: 999999;
+  display: none;
+  transform: translate(-50%, -50%);
+}
+
+.fade-in {
+  animation: keyframes-fadeIn 0.5s forwards;
+}
+
+.fade-out {
+  animation: keyframes-fadeOut 0.5s forwards;
+}
+
+.toast-inner {
+  position: relative;
+  width: auto;
+  width: 450px;
+  min-height: 80px;
+  padding: 0 18px 0 40px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  color: #fff;
+  white-space: pre-line;
+}
+
+@keyframes keyframes-fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes keyframes-fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

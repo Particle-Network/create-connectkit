@@ -6,7 +6,7 @@ import demoImage from '@/assets/demo.gif';
 import {
   useAccount,
 } from "@particle-network/connectkit";
-import Demo from './components/Demo';
+import Demo from './components/demo';
 
 import styles from './index.module.css'
 

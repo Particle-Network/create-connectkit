@@ -1,0 +1,38 @@
+.collapse {
+  overflow: hidden;
+  max-height: 1000px;
+  transition: all .6s linear;
+}
+
+.collapse-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.collapse-title {
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.arrow-icon {
+  transition: all .4s linear;
+  cursor: pointer;
+}
+
+.arrow-icon-closed {
+  transform: rotate(90deg);
+}
+
+.collapse-content {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.collapse-closed {
+  max-height: 60px;
+}

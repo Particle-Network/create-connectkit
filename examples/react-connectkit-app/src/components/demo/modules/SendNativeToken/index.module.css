@@ -1,0 +1,9 @@
+.collapse-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.result {
+  margin-top: 12px;
+  font-size: 14px;
+}

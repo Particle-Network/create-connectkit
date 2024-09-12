@@ -1,0 +1,19 @@
+.main-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 640px;
+  height: 640px;
+  transform: translate(-50%, -50%);
+  overflow-y: scroll;
+}
+
+.right-btn {
+  align-self:flex-end;
+}
+
+.collapse-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
