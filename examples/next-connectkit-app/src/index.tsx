@@ -24,7 +24,6 @@ export default function Index() {
             <Image sizes='100%' src={demoImage} alt='demo' />
           )
         }
-       
       </main>
     </>
   )
