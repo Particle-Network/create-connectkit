@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react";
 import arrowIcon from '@/assets/images/arrow.svg'
 import classnames from 'classnames';

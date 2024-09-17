@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useMemo, useEffect } from 'react';
 import { useAccount, useWallets } from '@particle-network/connectkit';
 import { usePublicClient } from '@particle-network/connectkit';

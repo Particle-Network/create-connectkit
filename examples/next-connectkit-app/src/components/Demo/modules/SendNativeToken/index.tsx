@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react';
 import { useAccount, useWallets } from '@particle-network/connectkit';
 import { parseEther, type Address } from 'viem';

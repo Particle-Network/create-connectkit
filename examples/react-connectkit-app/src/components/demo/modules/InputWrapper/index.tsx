@@ -36,7 +36,7 @@ type InputProps = {
 export function Input(props: InputProps) {
   const { value, setValue } = props;
 
-  const handleInputValue = (e) => {
+  const handleInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
   }
 
@@ -68,7 +68,7 @@ type TextareaProps = {
 export function Textarea(props: TextareaProps) {
   const { value, setValue } = props;
 
-  const handleInputValue = (e) => {
+  const handleInputValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value)
   }
 
@@ -110,13 +110,15 @@ export function Selector(props: SelectorProps) {
   const [toggleOptions, setToggleOptions] = useState(false);
   const { options = [], value, setValue } = props;
 
-  const handleSelectValue = (e) => {
-    setValue(e.target.getAttribute("data-value"));
+  const handleSelectValue = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLDivElement;
+    setValue(target.getAttribute("data-value") || '');
     setToggleOptions(false);
   }
 
-  const handleOnBlur = (e) => {
-    if (e.target.id !== 'options' && e.target.id !== 'selector') {
+  const handleOnBlur = (e: MouseEvent) => {
+    const target = e.target as HTMLDivElement
+    if (target?.id !== 'options' && target?.id !== 'selector') {
       setToggleOptions(false);
     }
   }
@@ -140,7 +142,7 @@ export function Selector(props: SelectorProps) {
                 <div key={item.value} onClick={handleSelectValue} className={classnames(styles.option, value === item.value ? styles['option-selected']  : '')} data-value={item.value}>{item.label}
                   {
                     value === item.value ? (
-                      <img className={styles['right-icon']} alt='right' src={rightIcon}></img>
+                      <img className={styles['right-icon']} alt='right' src={rightIcon} />
                     ) : null
                   }
                 </div>

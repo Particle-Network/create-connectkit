@@ -1,7 +1,7 @@
 .collapse {
   overflow: hidden;
   max-height: 1000px;
-  transition: all .6s linear;
+  transition: all .3s linear;
 }
 
 .collapse-header {
