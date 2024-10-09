@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  useAccount,
-} from "@particle-network/connectkit";
+import { useAccount } from '@particle-network/connectkit';
 import demoImage from './assets/demo.gif';
 
 import Demo from './components/demo';
@@ -15,17 +13,9 @@ function App() {
   return (
     <>
       <Header />
-      <main className={styles['main-content']}>
-        {
-          isConnected ? (
-            <Demo />
-          ) : (
-            <image href={demoImage} />
-          )
-        }
-      </main>
+      <main className={styles['main-content']}>{isConnected ? <Demo /> : <image href={demoImage} />}</main>
     </>
-  )
+  );
 }
 
 export default App;

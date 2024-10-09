@@ -14,7 +14,6 @@
   max-width: 100%;
 }
 
-
 .nav-content {
   display: flex;
   width: 800px;
@@ -31,5 +30,5 @@
 }
 
 .nav-item:hover {
-  color: #c084fc
+  color: #c084fc;
 }

@@ -9,15 +9,15 @@ import styles from './index.module.css';
 export default function SendNativeToken() {
   const [loading, setLoading] = useState(false);
   const [toAddress, setToAddress] = useState<string>('');
-  const [amount, setAmount] = useState<string>('')
+  const [amount, setAmount] = useState<string>('');
   const { chain, address } = useAccount();
   const [result, setResult] = useState<string>('');
   const [primaryWallet] = useWallets();
 
   const handleSendTransaction = async () => {
     try {
-      setLoading(true)
-      setResult('')
+      setLoading(true);
+      setResult('');
       // Prepare the transaction object
       const tx = {
         to: toAddress as Address,
@@ -26,30 +26,35 @@ export default function SendNativeToken() {
         chain: chain as any,
         account: address as Address,
       };
-  
+
       // Get the wallet client and send the transaction
       const walletClient = primaryWallet.getWalletClient();
       const transactionResponse = await walletClient.sendTransaction(tx);
-  
-      setResult(`Transaction Hash: ${transactionResponse}`)
+
+      setResult(`Transaction Hash: ${transactionResponse}`);
       setLoading(false);
     } catch (err) {
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <Collapse title="Send Native Token" activeIndex={1}>
+    <Collapse title='Send Native Token' activeIndex={1}>
       <div className={styles['collapse-content']}>
-        <Input type='text' label="Receive address" placeholder="0x..." value={toAddress} setValue={setToAddress} />
-        <Input type='number' label="Token amount"  placeholder="amount in wei" suffix="wei" value={amount} setValue={setAmount} />
-        <Button loading={loading} block="true" onClick={handleSendTransaction}>SEND TRANSACTION</Button>
+        <Input type='text' label='Receive address' placeholder='0x...' value={toAddress} setValue={setToAddress} />
+        <Input
+          type='number'
+          label='Token amount'
+          placeholder='amount in wei'
+          suffix='wei'
+          value={amount}
+          setValue={setAmount}
+        />
+        <Button loading={loading} block='true' onClick={handleSendTransaction}>
+          SEND TRANSACTION
+        </Button>
       </div>
-      {
-        result ? (
-          <div className={styles.result}>{result}</div>
-        ) : null
-      }
+      {result ? <div className={styles.result}>{result}</div> : null}
     </Collapse>
-  )
+  );
 }

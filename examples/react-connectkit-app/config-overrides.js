@@ -13,7 +13,7 @@ module.exports = function override(config, env) {
     url: false,
   };
 
-  config.resolve.alias['@'] = path.resolve('src')
+  config.resolve.alias['@'] = path.resolve('src');
 
   config.plugins.unshift(
     new webpack.ProvidePlugin({
@@ -35,9 +35,9 @@ module.exports = function override(config, env) {
     {
       test: /\.m?js/,
       resolve: {
-        fullySpecified: false
-      }
-    }
-  ]
+        fullySpecified: false,
+      },
+    },
+  ];
   return config;
 };

@@ -1,7 +1,7 @@
 .collapse {
   overflow: hidden;
   max-height: 1000px;
-  transition: all .3s linear;
+  transition: all 0.3s linear;
 }
 
 .collapse-header {
@@ -20,7 +20,7 @@
 }
 
 .arrow-icon {
-  transition: all .3s linear;
+  transition: all 0.3s linear;
   cursor: pointer;
 }
 

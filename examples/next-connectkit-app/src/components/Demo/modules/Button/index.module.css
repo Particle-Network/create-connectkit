@@ -1,8 +1,8 @@
 .button {
   padding: 12px 32px;
-  background-color: #A257FA;
+  background-color: #a257fa;
   border-radius: 12px;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   font-size: 14px;
   font-style: normal;
@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-@Keyframes donut-spin {
+@keyframes donut-spin {
   0% {
     transform: rotate(0deg) scale(1.3);
   }
