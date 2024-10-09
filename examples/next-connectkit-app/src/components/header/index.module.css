@@ -3,7 +3,15 @@
   height: 80px;
   position: fixed;
   top: 0;
-  background-color: #fff;
+  background-color: rgb(var(--background-header));
+}
+
+.nav-start {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-transform: capitalize;
+  font-weight: bold;
 }
 
 .nav {

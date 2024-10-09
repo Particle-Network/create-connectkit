@@ -26,17 +26,9 @@ export default function Collapse(props: CollapseProps) {
 
   return (
     <div className={classnames(styles.collapse, activeIndex === currentActiveIndex ? '' : styles['collapse-closed'])}>
-      <div className={styles['collapse-header']}>
+      <div className={styles['collapse-header']} onClick={changeActiveIndex}>
         <span className={styles['collapse-title']}>{props.title}</span>
-        <Image
-          src={arrowIcon}
-          alt='arrow'
-          className={classnames(
-            styles['arrow-icon'],
-            activeIndex === currentActiveIndex ? '' : styles['arrow-icon-closed']
-          )}
-          onClick={changeActiveIndex}
-        ></Image>
+        <Image src={arrowIcon} alt="arrow" className={classnames(styles['arrow-icon'], activeIndex === currentActiveIndex ? '' : styles['arrow-icon-closed'])} ></Image>
       </div>
       <div
         className={classnames(
