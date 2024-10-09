@@ -1,11 +1,8 @@
 .main-content {
-  position: fixed;
-  left: 50%;
-  top: 50%;
+  position: relative;
+  margin: 0 auto;
   width: 640px;
-  height: 640px;
-  transform: translate(-50%, -50%);
-  overflow-y: scroll;
+  margin-top: 100px;
 }
 
 .right-btn {
