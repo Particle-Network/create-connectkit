@@ -1,0 +1,44 @@
+.collapse {
+  overflow: hidden;
+  max-height: 1000px;
+  transition: all 0.3s linear;
+}
+
+.collapse-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  cursor: pointer;
+}
+
+.collapse-title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.arrow-icon {
+  transition: all 0.3s linear;
+}
+
+.arrow-icon-closed {
+  transform: rotate(90deg);
+}
+
+.collapse-content {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.collapse-closed {
+  transition-duration: 0s;
+  max-height: 60px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .arrow-icon {
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  }
+}

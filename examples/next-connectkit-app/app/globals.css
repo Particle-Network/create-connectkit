@@ -6,19 +6,35 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --background-content: 245, 245, 247;
+  --background-header: 255, 255, 255;
+  --background-demo: 255, 255, 255;
+  --background-input-content: 245, 246, 251;
+  --divider-color: 245, 246, 251;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-end-rgb: 35, 37, 41;
+    --background-content: 35, 37, 41;
+    --background-header: 28, 29, 34;
+    --background-demo: 28, 29, 34;
+    --background-input-content: 35, 37, 41;
+    --divider-color: 41, 43, 54;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  background: rgb(var(--background-content));
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 14px;
+  }
 }
 
 @layer utilities {

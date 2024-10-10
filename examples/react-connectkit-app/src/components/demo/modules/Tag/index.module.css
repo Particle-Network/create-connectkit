@@ -1,0 +1,8 @@
+.tag {
+  padding: 4px 10px;
+  background-color: #a257fa;
+  border-radius: 11px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+}

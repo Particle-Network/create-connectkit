@@ -1,0 +1,41 @@
+.button {
+  padding: 12px 32px;
+  background-color: #a257fa;
+  border-radius: 12px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.block-button {
+  width: 100%;
+}
+
+@keyframes donut-spin {
+  0% {
+    transform: rotate(0deg) scale(1.3);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1.3);
+  }
+}
+
+.loading {
+  display: inline-block;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-left-color: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  animation: donut-spin 1.2s linear infinite;
+  margin-right: 16px;
+}
+
+.disable-btn {
+  pointer-events: none;
+}
