@@ -12,7 +12,7 @@ import { EntryPosition, wallet } from '@particle-network/connectkit/wallet';
 import { aa } from '@particle-network/connectkit/aa';
 // aa end
 // evm start
-import { arbitrum, base, mainnet, polygon, lineaSepolia } from '@particle-network/connectkit/chains';
+import { arbitrum, base, lineaSepolia, mainnet, polygon } from '@particle-network/connectkit/chains';
 import { evmWalletConnectors } from '@particle-network/connectkit/evm';
 // evm end
 // solana start

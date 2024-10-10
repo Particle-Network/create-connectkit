@@ -9,8 +9,8 @@
   --background-content: 245, 245, 247;
   --background-header: 255, 255, 255;
   --background-demo: 255, 255, 255;
-  --background-input-content: 245,246,251;
-  --divider-color: 245,246,251
+  --background-input-content: 245, 246, 251;
+  --divider-color: 245, 246, 251;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,14 +21,22 @@
     --background-content: 35, 37, 41;
     --background-header: 28, 29, 34;
     --background-demo: 28, 29, 34;
-    --background-input-content: 35,37,41;
-    --divider-color: 41, 43, 54
+    --background-input-content: 35, 37, 41;
+    --divider-color: 41, 43, 54;
   }
 }
+
+
 
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-content));
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 14px;
+  }
 }
 
 @layer utilities {

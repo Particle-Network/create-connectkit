@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAccount } from '@particle-network/connectkit';
 import demoImage from './assets/demo.gif';
 

@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 interface GlobalState {
   activeIndex: number;

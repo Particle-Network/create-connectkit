@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import classnames from 'classnames';
 import rightIcon from '@/assets/images/right.svg';
+import classnames from 'classnames';
+import { useEffect, useState } from 'react';
 import Tag from '../Tag';
 
 import styles from './index.module.css';

@@ -1,7 +1,7 @@
+import { useAccount, useWallets } from '@particle-network/connectkit';
 import { useState } from 'react';
-import { useWallets, useAccount } from '@particle-network/connectkit';
-import Collapse from '../Collapse';
 import Button from '../Button';
+import Collapse from '../Collapse';
 import { Textarea } from '../InputWrapper';
 
 import styles from './index.module.css';

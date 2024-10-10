@@ -1,6 +1,6 @@
-import React from 'react';
 import arrowIcon from '@/assets/images/arrow.svg';
 import classnames from 'classnames';
+import React from 'react';
 import { useActiveIndex } from '../../store/useGlobalState';
 
 import styles from './index.module.css';

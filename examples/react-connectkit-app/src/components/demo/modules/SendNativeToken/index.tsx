@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import { useAccount, useWallets } from '@particle-network/connectkit';
+import { useState } from 'react';
 import { parseEther, type Address } from 'viem';
-import Collapse from '../Collapse';
 import Button from '../Button';
+import Collapse from '../Collapse';
 import { Input } from '../InputWrapper';
 import styles from './index.module.css';
 
