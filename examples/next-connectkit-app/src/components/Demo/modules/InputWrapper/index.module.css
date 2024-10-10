@@ -1,0 +1,111 @@
+.input-wrapper {
+  position: relative;
+}
+
+.label {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  color: #8b8ea1;
+  margin-bottom: 10px;
+}
+
+.input {
+  border-radius: 9px;
+  background: rgb(var(--background-input-content));
+  border-width: 0;
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.input[type='number'] {
+  padding-right: 40px;
+}
+
+.input::placeholder {
+  color: #d0d5df;
+  font-size: 14px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.suffix {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.textarea {
+  border-radius: 9px;
+  background: rgb(var(--background-input-content));
+  border-width: 0;
+  width: 100%;
+  height: 40px;
+  padding: 12px;
+  width: 100%;
+  height: 176px;
+  resize: none;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.textarea::placeholder {
+  color: #d0d5df;
+  font-size: 14px;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+}
+
+.options {
+  position: absolute;
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  background-color: #fff;
+  border: 1px solid rgba(197, 200, 215, 0.4);
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option {
+  color: #181b1e;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  height: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+  line-height: 32px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.option-selected {
+  border-radius: 5px;
+  background-color: rgba(149, 87, 246, 0.2);
+  color: #a257fa;
+}
+
+.option:hover {
+  border-radius: 5px;
+  background-color: rgba(149, 87, 246, 0.2);
+  color: #a257fa;
+}
