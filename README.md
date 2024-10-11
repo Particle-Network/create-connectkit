@@ -50,11 +50,11 @@ yarn workspace next-connectkit-app dev
 
 `next-connectkit-app:` 
 
-[![next-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/next-connectkit-app){:target="_blank"}
+<a href="https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/next-connectkit-app" target="_blank">![next-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)</a>
 
 `react-connectkit-app:` 
 
-[![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app){:target="_blank"}
+<a href="https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app" target="_blank">![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)</a>
 
 ## Learn More
 
