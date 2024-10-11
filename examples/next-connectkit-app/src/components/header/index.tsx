@@ -1,4 +1,4 @@
-import logo from '@/assets/images/logo.png';
+import logo from '../../assets/images/logo.png';
 import { ConnectButton } from '@particle-network/connectkit';
 import Image from 'next/image';
 import Link from 'next/link';
