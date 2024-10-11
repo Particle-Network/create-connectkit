@@ -66,7 +66,7 @@ export function parseAbiToMethodList(abiInput: string): MethodItem[] {
       abi: func,
     }));
   } catch (error) {
-    console.error('ABI 解析错误:', error);
+    console.error('ABI parse error:', error);
     return [];
   }
 }
