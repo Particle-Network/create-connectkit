@@ -48,9 +48,13 @@ yarn workspace next-connectkit-app dev
 
 ## Open demo in StackBlitz
 
-- `next-connectkit-app:` [![next-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/next-connectkit-app){:target="_blank"}
+`next-connectkit-app:` 
 
-- `react-connectkit-app:` [![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app){:target="_blank"}
+[![next-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/next-connectkit-app){:target="_blank"}
+
+`react-connectkit-app:` 
+
+[![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app){:target="_blank"}
 
 ## Learn More
 
