@@ -1,6 +1,6 @@
 'use client';
 
-import demoImage from '@/assets/demo.gif';
+import demoImage from './assets/demo.gif';
 import { useAccount } from '@particle-network/connectkit';
 import { isEVMChain } from '@particle-network/connectkit/chains';
 import Image from 'next/image';
