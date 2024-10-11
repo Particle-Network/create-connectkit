@@ -1,9 +1,11 @@
-import ContractInteraction from './modules/ContractInteraction';
-import Divider from './modules/Divider';
-import SendNativeToken from './modules/SendNativeToken';
-import SignMessage from './modules/SignMessage';
-import SignTypedData from './modules/SignTypedData';
-import { ContextProvider } from './store/useGlobalState';
+'use client';
+
+import ContractInteraction from '@/components/demo/modules/ContractInteraction';
+import Divider from '@/components/demo/modules/Divider';
+import SendNativeToken from '@/components/demo/modules/SendNativeToken';
+import SignMessage from '@/components/demo/modules/SignMessage';
+import SignTypedData from '@/components/demo/modules/SignTypedData';
+import { ContextProvider } from '@/components/demo/store/useGlobalState';
 
 import styles from './index.module.css';
 

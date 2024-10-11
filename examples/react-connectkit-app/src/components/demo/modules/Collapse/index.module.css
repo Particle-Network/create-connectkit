@@ -20,8 +20,7 @@
 }
 
 .arrow-icon {
-  transition: all 0.4s linear;
-  cursor: pointer;
+  transition: all 0.3s linear;
 }
 
 .arrow-icon-closed {

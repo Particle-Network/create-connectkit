@@ -1,12 +1,11 @@
 'use client';
 
 import demoImage from '@/assets/demo.gif';
+import Header from '@/components/header';
 import { useAccount } from '@particle-network/connectkit';
 import { isEVMChain } from '@particle-network/connectkit/chains';
 import Image from 'next/image';
 import Demo from './components/demo';
-import Header from './components/header';
-
 import styles from './index.module.css';
 
 export default function Index() {

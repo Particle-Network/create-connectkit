@@ -7,7 +7,7 @@ import styles from './index.module.css';
 
 export default function Header() {
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <nav className={styles.nav}>
         <div className={styles['nav-start']}>
           <div className={styles['nav-start-slogan']}>particle network</div>
@@ -34,6 +34,6 @@ export default function Header() {
           <ConnectButton />
         </div>
       </nav>
-    </div>
+    </header>
   );
 }

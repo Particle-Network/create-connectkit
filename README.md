@@ -8,7 +8,7 @@
 
 ## Overview
 
-Particle Connectkit is a [React](https://react.dev/) library that easily adds wallet and social login support to your dApp.  
+Particle Connectkit is a [React](https://react.dev/) library that easily adds wallet and social login support to your dApp.
 
 Particle Connectkit provides the following key features:
 

@@ -50,7 +50,7 @@ export default function SendNativeToken() {
           value={amount}
           setValue={setAmount}
         />
-        <Button loading={loading} block='true' onClick={handleSendTransaction}>
+        <Button loading={loading} block onClick={handleSendTransaction}>
           SEND TRANSACTION
         </Button>
       </div>

@@ -2,6 +2,7 @@
   position: relative;
   margin: 0 auto;
   width: 640px;
+  max-width: 100%;
   margin-top: 100px;
 }
 

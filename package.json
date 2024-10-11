@@ -10,7 +10,7 @@
     "cli"
   ],
   "scripts": {
-    "prettier": "prettier --write '**/*.{js,cjs,jsx,ts,tsx,css,less,sass,html,json}'",
+    "prettier": "prettier --write '**/*.{js,cjs,jsx,ts,tsx,css,less,sass,html,json,md}'",
     "upgrade:particle": "node scripts/updateVersion.cjs"
   },
   "devDependencies": {

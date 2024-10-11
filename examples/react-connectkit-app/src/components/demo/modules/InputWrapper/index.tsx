@@ -1,5 +1,3 @@
-'use client';
-
 import rightIcon from '@/assets/images/right.svg';
 import classnames from 'classnames';
 import { useEffect, useState } from 'react';

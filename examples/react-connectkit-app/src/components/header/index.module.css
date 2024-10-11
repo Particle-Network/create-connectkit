@@ -15,31 +15,44 @@
   font-weight: bold;
 }
 
+.nav-start-slogan {
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
 .nav {
   width: 1440px;
+  max-width: 100%;
   height: 36px;
   display: flex;
   margin: 22px auto;
-  justify-content: space-between;
   align-items: center;
-  max-width: 100%;
+  position: relative;
+  padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .nav-content {
   display: flex;
-  width: 400px;
   justify-content: flex-start;
   gap: 40px;
   align-items: center;
+  margin-left: 40px;
+  @media (max-width: 800px) {
+    display: none;
+  }
 }
 
 .nav-item {
   font-weight: 500;
-  font-size: 16px;
-  text-decoration: none;
-  color: rgb(var(--foreground-rgb));
 }
 
 .nav-item:hover {
   color: #c084fc;
+}
+
+.nav-end {
+  position: absolute;
+  right: 16px;
 }

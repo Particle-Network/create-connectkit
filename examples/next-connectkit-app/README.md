@@ -30,7 +30,6 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
 ## Learn More
 
 ### Connectkit
@@ -39,7 +38,6 @@ To learn more about Connectkit, take a look at the following resources:
 
 - [🔥Live Demo](https://demo.particle.netwok) - feature demonstration and custom styling.
 - [Docs](https://developers.particle.network/api-reference/connect/desktop/web) - learn about `@particle-network/connectkit` features and API.
-
 
 ### Next.js
 

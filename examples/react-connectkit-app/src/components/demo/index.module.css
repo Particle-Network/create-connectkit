@@ -3,4 +3,5 @@
   background: rgb(var(--background-demo));
   box-shadow: 0px 4px 10px 5px rgba(139, 142, 161, 0.1);
   padding: 18px;
+  margin: 0 16px 80px;
 }

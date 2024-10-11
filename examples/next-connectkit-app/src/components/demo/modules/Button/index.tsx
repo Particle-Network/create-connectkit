@@ -9,20 +9,20 @@ type ButtonProps = {
 };
 
 export default function Button(props: ButtonProps) {
-  const { className, loading = false, ...rest } = props;
+  const { className, loading = false, block, children, ...rest } = props;
 
   return (
     <div
       className={classnames(
         styles.button,
-        props.block ? styles['block-button'] : '',
+        block ? styles['block-button'] : '',
         className,
         loading ? styles['disable-btn'] : ''
       )}
       {...rest}
     >
       {loading ? <div className={styles.loading}></div> : null}
-      {props.children}
+      {children}
     </div>
   );
 }
