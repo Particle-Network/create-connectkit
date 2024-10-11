@@ -46,6 +46,12 @@ Start a demo:
 yarn workspace next-connectkit-app dev
 ```
 
+## Open demo in StackBlitz
+
+[![next-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/next-connectkit-app_)
+
+[![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app)
+
 ## Learn More
 
 - 🎉 **[Live Demo](https://demo.particle.netwok)**: Explore a live demo of Particle Connectkit’s features and customization options.
