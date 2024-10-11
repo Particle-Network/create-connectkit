@@ -56,7 +56,7 @@ const config = createConfig({
       metadata: {
         name: 'Connectkit Demo',
         icon: typeof window !== 'undefined' ? `${window.location.origin}/favicon.ico` : '',
-        description: 'Particle Connectkit Next.js Scaffold.',
+        description: 'Particle Connectkit React Scaffold.',
         url: typeof window !== 'undefined' ? window.location.origin : '',
       },
       walletConnectProjectId: walletConnectProjectId,

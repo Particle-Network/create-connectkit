@@ -12,7 +12,9 @@ function App() {
   return (
     <>
       <Header />
-      <main className={styles['main-content']}>{isConnected ? <Demo /> : <image href={demoImage} />}</main>
+      <main className={styles['main-content']}>
+        {isConnected ? <Demo /> : <img src={demoImage} style={{ width: '100%' }} />}
+      </main>
     </>
   );
 }
