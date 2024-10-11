@@ -15,7 +15,11 @@ export default function Index() {
     <>
       <Header />
       <main className={styles['main-content']}>
-        {isConnected && chain && isEVMChain(chain) ? <Demo /> : <Image sizes='100%' src={demoImage} alt='demo' />}
+        {isConnected && chain && isEVMChain(chain) ? (
+          <Demo />
+        ) : (
+          <Image sizes='100%' src={demoImage} style={{ width: '100%' }} alt='demo' />
+        )}
       </main>
     </>
   );
