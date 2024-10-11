@@ -1,4 +1,4 @@
-import arrowIcon from '@/assets/images/arrow.svg';
+import arrowIcon from '../../../../assets/images/arrow.svg';
 import classnames from 'classnames';
 import Image from 'next/image';
 import React from 'react';
