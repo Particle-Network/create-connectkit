@@ -14,6 +14,7 @@
     "assert": "^2.1.0",
     "browserify-zlib": "^0.2.0",
     "https-browserify": "^1.0.0",
+    "npm-force-resolutions": "^0.0.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -27,7 +28,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "preinstall": "npx npm-force-resolutions"
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +51,8 @@
   },
   "devDependencies": {
     "react-app-rewired": "^2.2.1"
+  },
+  "resolutions": {
+    "typescript": "^4.9.5"
   }
 }
