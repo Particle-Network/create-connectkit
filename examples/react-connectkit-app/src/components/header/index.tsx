@@ -1,6 +1,5 @@
 import logo from '../../assets/images/logo.png';
 import { ConnectButton } from '@particle-network/connectkit';
-import Image from 'next/image';
 
 import styles from './index.module.css';
 
@@ -10,7 +9,7 @@ export default function Header() {
       <nav className={styles.nav}>
         <div className={styles['nav-start']}>
           <div className={styles['nav-start-slogan']}>particle network</div>
-          <Image src={logo} width={36} height={36} alt='logo'></Image>
+          <img src={logo} width={36} height={36} alt="logo" />
         </div>
         <div className={styles['nav-content']}>
           <a
