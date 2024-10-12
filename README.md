@@ -54,7 +54,7 @@ yarn workspace next-connectkit-app dev
 
 `react-connectkit-app:` 
 
-<a href="https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app" target="_blank">![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)</a>
+<a href="https://stackblitz.com/github/Particle-Network/create-connectkit/tree/feature/stackblitz/examples/react-connectkit-app?preset=node&terminal=start" target="_blank">![react-connectkit-app](https://developer.stackblitz.com/img/open_in_stackblitz.svg)</a>
 
 ## Learn More
 

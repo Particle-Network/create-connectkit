@@ -27,3 +27,9 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-content));
 }
+
+@media (max-width: 800px) {
+  body {
+    font-size: 14px;
+  }
+}
