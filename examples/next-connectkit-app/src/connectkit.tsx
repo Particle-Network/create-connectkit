@@ -20,9 +20,9 @@ import { solana } from '@particle-network/connectkit/chains';
 import { solanaWalletConnectors } from '@particle-network/connectkit/solana';
 // solana end
 
-const projectId = process.env.NEXT_PUBLIC_PROJECT_ID as string;
-const clientKey = process.env.NEXT_PUBLIC_CLIENT_KEY as string;
-const appId = process.env.NEXT_PUBLIC_APP_ID as string;
+const projectId = 'b9036c26-ed43-4050-912b-da07266c9407';
+const clientKey = 'cQ3msMq0BiHTuV9csvCJJnDnrvhTeCVIbO9qk4sH';
+const appId = 'a3167218-5b1d-454f-9d7f-4a58c67cf8fb';
 const walletConnectProjectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string;
 
 if (!projectId || !clientKey || !appId) {
