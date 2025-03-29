@@ -48,5 +48,5 @@ yarn workspace next-connectkit-app dev
 
 ## Learn More
 
-- 🎉 **[Live Demo](https://demo.particle.netwok)**: Explore a live demo of Particle Connectkit’s features and customization options.
+- 🎉 **[Live Demo](https://demo.particle.network)**: Explore a live demo of Particle Connectkit’s features and customization options.
 - 👉 **[Documentation](https://developers.particle.network/api-reference/connect/desktop/web)**: Learn more about the features and API of `@particle-network/connectkit`.
